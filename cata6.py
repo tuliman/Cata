@@ -1,28 +1,24 @@
-from itertools import permutations
-
-
-def next_smaller(n):
-    d = 0
-    c = ''
-    val = []
-    st = []
-    if len(str(n)) != 1:
-        data = (permutations(str(n), len(str(n))))
-
-        for i in data:
-            st.append(' '.join(i).replace(' ', ''))
-        st = (set([int(x) for x in st if int(x) < n and len(str(x))==len(str(n))]))
-
-        print(val)
-        if len(st)!=0:
-            return max(st)
-        else:
-            return -1
-
-
-    else:
+def next_bigger(num):
+    digits = [int(i) for i in str(num)]
+    idx = len(digits) - 1
+    while idx >= 1 and digits[idx-1] >= digits[idx]:
+        idx -= 1
+    if idx == 0:
         return -1
+    pivot = digits[idx-1]
+    swap_idx = len(digits) - 1
+    while pivot >= digits[swap_idx]:
+        swap_idx -= 1
+    digits[swap_idx], digits[idx-1] = digits[idx-1], digits[swap_idx]
+    digits[idx:] = digits[:idx-1:-1]
+    return int(''.join(str(x) for x in digits))
 
 
 
-print(next_smaller(1234567908))
+
+
+
+
+
+
+print(next_bigger(9))
