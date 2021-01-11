@@ -7,6 +7,7 @@ def sum_of_intervals(intervals):
     for d in data:
         for j in d :
             f.add(j)
+            print(f)
     return len(f)
 
 
@@ -15,4 +16,4 @@ def sum_of_intervals(intervals):
 
 
 
-sum_of_intervals([(1, 4), (7, 10), (3, 5)])
+print(sum_of_intervals([(1, 4), (7, 10), (3, 5)]))
